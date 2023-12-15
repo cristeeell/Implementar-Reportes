@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Jugador</title>
+    <style>
+        body {
+            background-color: #000000 ; /* Negro */
+            color: #4B5320; /* Verde militar */
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #4B5320; /* Verde militar */
+            text-align: center;
+        }
+
+        form {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* Blanco */
+            border-radius: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4B5320; /* Verde militar */
+            color: #000000 ; /* Negro */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto; /* Centrar horizontalmente */
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            color: #4B5320; /* Verde militar */
+        }
+
+        th {
+            text-align: left;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            color: #4B5320; /* Verde militar */
+            text-decoration: none;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agregar Jugador</h1>
+    <form method="POST">
+        <table>
+            {% csrf_token %}
+            {% for field in formulario %}
+                <tr>
+                    <th>{{ field.label_tag }}</th>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="Agregar">
+    </form>
+    <a href="{% url 'jugadores' %}">Regresar</a>
+</body>
+</html>
